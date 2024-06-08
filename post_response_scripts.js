@@ -125,6 +125,32 @@ pm.test("Valid schema", () =>{
 });
 
 
+// ----------------------------------------------------------------------------
+
+
+
+// Get variables values and print
+
+global_URl = pm.globals.get("Global_URL")
+collection_URL = pm.collectionVariables.get("Collection_URL")
+id = pm.environment.get("environment_userID")
+user_name = pm.variables.get("local_user_name")
+
+console.log(global_URl)
+console.log(collection_URL)
+console.log(id)
+console.log(user_name)
+
+
+
+// Created varibales remove
+
+pm.globals.unset("Global_URL")
+pm.collectionVariables.unset("Collection_URL")
+pm.environment.unset("environment_userID")
+
+
+
 
 
 
