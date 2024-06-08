@@ -152,6 +152,13 @@ pm.environment.unset("environment_userID")
 
 
 
+    // API chaining example
 
+//Suppose this is post API, when you created user, generate user ID, using that ID you use for get,update and delete APIs 
+var json_data = pm.response.json()
+
+var user_id = json_data.user_id
+
+pm.collectionVariables.set("id","user_id");
 
 
