@@ -69,6 +69,63 @@ pm.test("Test data values is correct", () => {
     pm.expect(jsonData.email_verified).to.eql("true");
 })
 
+// Validate response schema
+
+// genarated schema ex-
+var schema = {
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "integer"
+    },
+    "email": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "nicknames": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "logins_count": {
+      "type": "integer"
+    },
+    "email_verified": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "user_id",
+    "email",
+    "name",
+    "nicknames",
+    "logins_count",
+    "email_verified"
+  ]
+}
+
+
+pm.test("Valid schema", () =>{
+    pm.expect(tv4.validate(jsonData, schema)).to.be.true;
+});
+
+
+
 
 
 
