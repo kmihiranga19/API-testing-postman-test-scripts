@@ -162,3 +162,35 @@ var user_id = json_data.user_id
 pm.collectionVariables.set("id","user_id");
 
 
+// --------------------------------------------------------------------------------------------------------------
+
+                    // Validate that user details values  with POST request body details(Random generated)
+
+// Random data POST request 's get user ID and create collection variable. This script should in POST requet post-response script
+
+const json_Data = pm.response.json();
+
+pm.collectionVariables.set("user_id", json_Data.id);
+
+
+
+
+
+// get request's end point should be -  https://gorest.co.in/public/v2/users/{{user_id}}
+
+// then validate json data values
+
+const json_data = pm.response.json()
+
+
+pm.test("Validate user details", () => {
+    pm.expect(json_data.name).to.eql(pm.collectionVariables.get("user_name"));
+    pm.expect(json_data.email).to.eql(pm.collectionVariables.get("user_email"));
+    pm.expect(json_data.gender).to.eql(pm.collectionVariables.get("gender"));
+    pm.expect(json_data.status).to.eql(pm.collectionVariables.get("status"));
+})
+
+
+
+
+
